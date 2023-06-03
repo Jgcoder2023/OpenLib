@@ -6,7 +6,7 @@
 
 ### SoftTimer 适用于单片机的软定时器
 
-点击查看详情使用文档
+[点击查看详情使用文档](https://github.com/Jgcoder2023/OpenLib/tree/main/SoftTimer)
 
 - [x] 支持自定义时间节拍
 - [x] 支持任意时间的回调
@@ -24,5 +24,5 @@
 
 
 
-[TOC]
+
 
