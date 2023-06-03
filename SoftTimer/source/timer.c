@@ -148,6 +148,13 @@ void RestartTime(TimeValue* timeNode){
 	timeNode->IsCmd = ON;
 }
 
+//重启带次数的定时器(定时器停止后才能设置)
+void RestartTimeNum(TimeValue* timeNode,uint RunNum){
+	if(timeNode->RunNum == 0 && timeNode->Forever == OFF){
+		timeNode->RunNum = RunNum;
+	}
+}
+
 
 //一个节拍周期内的空闲函数
 __weak void TimerIdle(void){}
@@ -162,6 +169,7 @@ Timer* TimerInit(void){
 	time->Del = DelTime;
 	time->Pause = PauseTime;
 	time->Restart = RestartTime;
+	time->RestartTimeNum = RestartTimeNum;
 	return time;
 }
 

@@ -2,8 +2,8 @@
 
 
 /**
- * æœ¬ç¤ºä¾‹æ˜¯åŸºäº1msèŠ‚æ‹
- *  è¯¦ç»†å‡½æ•°è¯´æ˜è¯·çœ‹å¯¹åº”æ–‡æ¡£
+ * ±¾Ê¾ÀıÊÇ»ùÓÚ1ms½ÚÅÄ
+ *  ÏêÏ¸º¯ÊıËµÃ÷Çë¿´¶ÔÓ¦ÎÄµµ
 */
 
 
@@ -14,30 +14,30 @@ TimeValue* t500;
 TimeValue* t2000;
 
 
-//1000msçš„å›è°ƒ
+//1000msµÄ»Øµ÷
 void LedBlink1000(any data){
 	printf("1S \r\n");
 }
 
-//500msçš„å›è°ƒ
+//500msµÄ»Øµ÷
 void LedBlink500(any data){
 	printf("500ms \r\n");
 }
 
-//2000msçš„å›è°ƒ
+//2000msµÄ»Øµ÷
 void LedBlink2000(any data){
 	printf("2S \r\n");
 }
 
-//å•ä¸ªå‘¨æœŸå†…çš„ç©ºé—²å‡½æ•°
+//µ¥¸öÖÜÆÚÄÚµÄ¿ÕÏĞº¯Êı
 void TimerIdle(void){
 //	printf("Idle \r\n");
 }
 
 
 
-//å•ç‰‡æœºçš„1msä¸­æ–­å‡½æ•°
-// ç»™å®šæ—¶å™¨æä¾›æœ€å°èŠ‚æ‹ï¼ˆæœ€å°å¿ƒè·³ï¼‰
+//µ¥Æ¬»úµÄ1msÖĞ¶Ïº¯Êı
+// ¸ø¶¨Ê±Æ÷Ìá¹©×îĞ¡½ÚÅÄ£¨×îĞ¡ĞÄÌø£©
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
   HeartTimer();
 }
@@ -45,13 +45,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 
 int main(void){
-  timer = TimerInit();    //åˆå§‹åŒ–å®šæ—¶å™¨å¯¹è±¡
-	t1000 = timer->Add(1000,0,(any)0,LedBlink1000);   //æ·»åŠ ä¸€ä¸ª1000ms æ— é™å¾ªç¯çš„å®šæ—¶å™¨
-	t500 = timer->Add(500,10,(any)0,LedBlink500);   //æ·»åŠ ä¸€ä¸ª500ms æ‰§è¡Œ10æ¬¡çš„å®šæ—¶å™¨
-	t2000 = timer->Add(2000,0,(any)0,LedBlink2000);  //æ·»åŠ ä¸€ä¸ª2000ms æ— é™å¾ªç¯çš„å®šæ—¶å™¨
+  timer = TimerInit();    //³õÊ¼»¯¶¨Ê±Æ÷¶ÔÏó
+	t1000 = timer->Add(1000,0,(any)0,LedBlink1000);   //Ìí¼ÓÒ»¸ö1000ms ÎŞÏŞÑ­»·µÄ¶¨Ê±Æ÷
+	t500 = timer->Add(500,10,(any)0,LedBlink500);   //Ìí¼ÓÒ»¸ö500ms Ö´ĞĞ10´ÎµÄ¶¨Ê±Æ÷
+	t2000 = timer->Add(2000,0,(any)0,LedBlink2000);  //Ìí¼ÓÒ»¸ö2000ms ÎŞÏŞÑ­»·µÄ¶¨Ê±Æ÷
 
 	while(1){
-		//å®šæ—¶å™¨ä¿æ´»
+		//¶¨Ê±Æ÷±£»î
     ActivityTimer();
 	}
 }

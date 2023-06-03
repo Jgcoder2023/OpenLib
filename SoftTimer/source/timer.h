@@ -21,7 +21,7 @@ typedef struct{
 	uchar TimeOutCycle;  //超时周期
 	Sw Forever;  //是否永远执行
 	uint RunNum;  //执行次数    0-65535
-	any Data;       //可以携带一个255以内的参数
+	any Data;       //可以携带一个任意类型的参数
 	void (*TimerCallBack)(any);  //超时回调函数
 	Sw IsCmd;     //是否使能
 }TimeValue;
@@ -32,6 +32,7 @@ typedef struct{
 	void(*Del)(TimeValue* time);
 	void (*Pause)(TimeValue* timeNode);
 	void (*Restart)(TimeValue* timeNode);
+	void (*RestartTimeNum)(TimeValue* timeNode,uint RunNum);
 }Timer;
 
 //定时器链表
