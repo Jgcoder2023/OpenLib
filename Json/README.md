@@ -1,5 +1,9 @@
 ### 单片机使用JSON序列化及反序列化使用指南
 
+1.  安装json.pack文件
+2. 在keil库管理中选择Data Exchange  > JSON > jansson
+3. 在使用的地方引入 #include "jansson.h"
+
 
 
 ###### 构建：普通的JSON键值对
@@ -330,6 +334,4 @@ uint8_t Jansson3_Demo(void)
 ### 注意事项：
 
 1. 如果出现解析失败，或者解析错误，可以尝试增加Heap_Size大小：
-2. 解析和生成json的时候要保证有足够的堆空间，如果堆大小不够会处理失败。博主一般设置3KB的heap。 x0C00
-
-![](\images\heap.png)
+2. 解析和生成json的时候要保证有足够的堆空间，如果堆大小不够会处理失败。一般设置3KB的heap。在单片机的启动文件中修改 ,以stm32f103举例，就是在文件startuo_stm32f10x_hd.s文件中，修改Heap_Size    EQU     0x00000c00
