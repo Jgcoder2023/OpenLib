@@ -1,12 +1,12 @@
 #include "timer.h"
 
-ulong Tick = 0;   //系统节拍数
-uchar TickCycle = 0; //完整节拍周期
-TimeList* HeadNode = NULL; //头部节点
-TimeList* FootNode = NULL; //尾部节点
+static ulong Tick = 0;   //系统节拍数
+static uchar TickCycle = 0; //完整节拍周期
+static TimeList* HeadNode = NULL; //头部节点
+static TimeList* FootNode = NULL; //尾部节点
 
 //申请一个存储节点
-void AddTimerNode(TimeValue* timeValue){
+static void AddTimerNode(TimeValue* timeValue){
 	TimeList* p = HeadNode;
 	TimeList* InsertNode = FootNode;  //寻找合适的插入节点,如果没有就尾插
 	TimeList* NewNode = (TimeList*)malloc(sizeof(TimeList));
@@ -49,7 +49,7 @@ void AddTimerNode(TimeValue* timeValue){
 }
 
 //添加一个定时器
-TimeValue* AddTime(uint TimingTime,uint RunNum,any Data,void(*TimerCallBack)(any)){
+static TimeValue* AddTime(uint TimingTime,uint RunNum,any Data,void(*TimerCallBack)(any)){
 	TimeValue* NewTime = (TimeValue*)malloc(sizeof(TimeValue));
 	if(NewTime == NULL){
 		return NULL;  //说明申请内存失败
@@ -69,7 +69,7 @@ TimeValue* AddTime(uint TimingTime,uint RunNum,any Data,void(*TimerCallBack)(any
 
 
 //删除定时器
-void DelTime(TimeValue* timeNode){
+static void DelTime(TimeValue* timeNode){
 	TimeList* p = HeadNode;
 	while(p != NULL){
 		if(p->Data == timeNode){
@@ -140,16 +140,16 @@ void ActivityTimer(void){
 }
 
 //暂停定时器
-void PauseTime(TimeValue* timeNode){
+static void PauseTime(TimeValue* timeNode){
 	timeNode->IsCmd = OFF;
 }
 //重启定时器
-void RestartTime(TimeValue* timeNode){
+static void RestartTime(TimeValue* timeNode){
 	timeNode->IsCmd = ON;
 }
 
 //重启带次数的定时器(定时器停止后才能设置)
-void RestartTimeNum(TimeValue* timeNode,uint RunNum){
+static void RestartTimeNum(TimeValue* timeNode,uint RunNum){
 	if(timeNode->RunNum == 0 && timeNode->Forever == OFF){
 		timeNode->RunNum = RunNum;
 	}
